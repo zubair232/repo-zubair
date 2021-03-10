@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Reset button in HTML
+</title>
+<style>
+.form-data {
+border : #81D4FA 2px solid;
+background-color : #03a9f400;
+text-align : left;
+padding-left : 20px;
+height : 450px;
+width : 95%;
+}
+.form {
+margin:5px auto;
+max-width: 700px;
+padding: 25px 15px 15px 25px;
+}
+.form li {
+margin: 12px 0 0 0;
+list-style: none;
+}
+.form label {
+margin: 0 0 3px 0;
+padding: 0px;
+display: block;
+font-weight: bold;
+}
+.form .field {
+width: 80%;
+height: 20px;
+}
+.form input[ type = submit], .form input[ type = reset] {
+background: #2196F3;
+padding: 10px 17px 10px 17px;
+margin-right: 10px;
+color: #fff;
+border: none;
+}
+.form input[type = submit]:hover, .form input[ type = reset]:hover {
+background: #2173f3;
+}
+.heading {
+font-weight: bold;
+border-bottom: 2px solid #ddd;
+font-size: 15px;
+width: 98%;
+}
+</style>
+</head>
+<body>
+<div class = "form-data">
+<div class = "heading">
+<h2> Employee form submission </h2>
+<p> Click reset button to reset the form or Click submit button to submit the form  </p>
+</div>
+<div>
+<form action = "http://localhost:3000/example" method="POST" >
+<ul class = "form" >
+<li>
+<label> Employee Name <span class = "required"> * </span></label>
+<input type = "text" name = "empName" placeholder = " Employee Name " class = "field"/>
+</li>
+<li>
+<label> Employee ID <span class = "required"> * </span></label>
+<input type = "number" name = "empID" placeholder = " Employee ID " class = "field" />
+</li>
+<li>
+<label> Employee Designation <span class = "required" > * </span></label>
+<input type="text" name="empDesignation" placeholder = " Employee Designation" class="field" />
+</li>
+<li>
+<input type = "reset" value = "Reset">
+<input type = "submit" value = "Submit" />
+</li>
+</ul>
+</form>
+</div>
+</div>
+<script type = "text/javascript">
+</script>
+</body>
+</html>
