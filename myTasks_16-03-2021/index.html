@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Form_fetch</title>
+  </head>
+
+  <body>
+    <h1>Employee form</h1>
+    <div>
+      <label for="emp_name">Employee Name</label>
+      <input type="text" name="emp_name" id="emp_name" placeholder="Name" />
+      <label for="emp_id">Employee ID</label>
+      <input type="text" name="emp_id" id="emp_id" placeholder="Id" />
+      <label for="emp_designation">Employee Designation</label>
+      <input
+        type="text"
+        name="emp_designation"
+        id="emp_designation"
+        placeholder="Designation"
+      />
+      <input type="submit" value="Submit" id="submit" onclick="submit()" />
+      <input type="submit" value="Reset" id="reset" onclick="reset()" />
+    </div>
+    <div>
+      <h2>Employee details</h2>
+      <h3 id="resp_id"></h3>
+      <h3 id="resp_name"></h3>
+      <h3 id="resp_designation"></h3>
+    </div>
+    <script>
+      async function submit() {
+        var empId = document.getElementById("emp_id").value;
+        var empName = document.getElementById("emp_name").value;
+        var empDesignation = document.getElementById("emp_designation").value;
+
+        const data = {
+          empName: empName,
+          empId: empId,
+          empDesignation: empDesignation,
+        };
+
+        fetch("http://localhost:3000/example", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            mode: "no-cors",
+          },
+          body: JSON.stringify(data),
+        }).then((response) => {
+          response.json().then((res) => {
+            console.log(res);
+            document.getElementById("resp_id").innerHTML = res.empId;
+            document.getElementById("resp_name").innerHTML = res.empName;
+            document.getElementById("resp_designation").innerHTML =
+              res.empDesignation;
+          });
+        });
+      }
+      function reset() {
+        var empId = document.getElementById("emp_id");
+        var empName = document.getElementById("emp_name");
+        var empDesignation = document.getElementById("emp_designation");
+        empId.value = "";
+        empName.value = "";
+        empDesignation.value = "";
+      }
+    </script>
+  </body>
+</html>
